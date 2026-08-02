@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <title>Personal Blog Website</title>
+</head>
+<body>
+  <section id="blogSection">
+        <form id="blogForm">
+            <label for="title">Blog Title:</label>`
+            <input type="text" id="title" name="title" placeholder="Enter your blog title..." required>
+            <span id="titleError" class="error-message"></span>
+
+            <label for="blogText">Upload to your Blog:</label>
+            <textarea id="blogText" name="blogText" placeholder="Your message here..." required></textarea>
+            <span id="blogTextError" class="error-message"></span>
+            <button type="submit">Submit</button>
+        </form>
+        <section id="blogPosts">
+            <ul id="blogList"></ul>
+        </section>
+    </section>
+</body>
+</html>
