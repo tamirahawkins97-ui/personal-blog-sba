@@ -1,0 +1,46 @@
+body{
+  background-color:rgba(243, 241, 227, 0.633);
+  font-family: "Cinzel", serif;
+}
+
+#blogSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;  
+  justify-content: center;
+  width: 90%;    
+  height:90%;        
+  max-width: 485px; 
+  margin: 2rem auto;      
+  padding: 2rem;
+  background-color: rgba(226, 192, 220, 0.492);
+  border-radius: 25px;
+}
+label {
+ font-family: "Libre Baskerville", serif;
+  font-size: 15px;
+  font-weight:normal;
+  color: #333;
+  display: block; 
+  margin-top:15px;
+  margin-bottom: 5px;
+}
+
+#blogList li {
+    background-image: url();
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    align-items: center;      
+    justify-content: space-between; 
+}
+
+.edit-btn, .delete-btn {
+    display: inline-block;
+    margin-left: 6px;
+}
+button{
+    margin-top:15px;
+    margin-left:50px;
+    display: block;
+}
