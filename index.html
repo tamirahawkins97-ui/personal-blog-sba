@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Kalnia+Glaze:wght@100..700&family=Libre+Baskerville:ital,wght@0,400..700;1,400..700&family=Lora:ital,wght@0,400..700;1,400..700&family=Rubik+Puddles&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kalnia+Glaze:wght@100..700&family=Libre+Baskerville:ital,wght@0,400..700;1,400..700&family=Lora:ital,wght@0,400..700;1,400..700&family=Rubik+Puddles&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
     <title>Personal Blog Website</title>
 </head>
 <body>
-  <section id="blogSection">
+    <section id="blogSection">
         <form id="blogForm">
             <label for="title">Blog Title:</label>
             <input type="text" id="title" name="title" placeholder="Enter your blog title..." required>
@@ -20,8 +20,10 @@
             <label for="blogText">Upload Blog Message:</label>
             <textarea id="blogText" name="blogText" placeholder="Your message here..." required></textarea>
             <span id="blogTextError" class="error-message"></span>
+
             <button type="submit">Submit</button>
         </form>
+
         <section id="blogPosts">
             <ul id="blogList"></ul>
         </section>
