@@ -1,24 +1,26 @@
-body{
- background-color: rgba(243, 241, 227, 0.633);
-  font-family: "Cinzel", serif;
-  background-image: url('./personal-blog-images/background.jpg');
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('./personal-blog-images/background-image.jpg');
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   background-position: center;
   background-attachment: fixed;
+  background-color: rgba(243, 241, 227, 0.633);
+  font-family: "Cinzel", serif;
 }
+
 #blogSection {
-  padding-top: 25px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   width: 90%;
   max-width: 485px;
-  margin: 2rem auto; 
   padding: 2rem;
-  
 }
+
 label {
   font-family: "Libre Baskerville", serif;
   font-size: 15px;
@@ -82,6 +84,10 @@ h3 {
   text-shadow:
   0 0 5px #ff1493,
   0 0 15px #ff69b4;
+  padding: 10px;
+  color: fuchsia;
+  border: 2px solid #3372f039;
+  word-wrap: break-word;
 }
 
 .content {
