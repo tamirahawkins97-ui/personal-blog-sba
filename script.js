@@ -22,7 +22,11 @@ const posts = getSavedPosts();
 // Reusable Helper Function: Creates post elements, attaches button listeners, and appends to DOM
 const renderPost = (post) => {
     const li = document.createElement("li");
-    li.textContent = `${post.title}: ${post.content} (Posted: ${post.timestamp})`; 
+
+    // Creating HTML content for CSS Styling
+    li.innerHTML = `<h3>${post.title}</h3>
+    <p class="content">${post.content}</p>
+    <p class="timestamp">Posted: ${post.timestamp}</p>`;
     
     const editButton = document.createElement("button");
     const deleteButton = document.createElement("button");
@@ -111,7 +115,13 @@ blogForm.addEventListener("submit", (event) => {
         id: Date.now(),
         title: titleValue,
         content: blogTextValue,
-        timestamp: new Date().toLocaleString()
+       timestamp: new Date().toLocaleString("en-US", {
+       month: "short",
+       day: "numeric",
+       year: "numeric",
+       hour: "numeric",
+       minute: "2-digit"
+    })
     };
 
     // Save to array and update localStorage

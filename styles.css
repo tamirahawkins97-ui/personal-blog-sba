@@ -1,46 +1,100 @@
 body{
-  background-color:rgba(243, 241, 227, 0.633);
+ background-color: rgba(243, 241, 227, 0.633);
   font-family: "Cinzel", serif;
+  background-image: url('./personal-blog-images/background.jpg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  background-attachment: fixed;
 }
-
 #blogSection {
+  padding-top: 25px;
   display: flex;
   flex-direction: column;
-  align-items: center;  
+  align-items: center;
   justify-content: center;
-  width: 90%;    
-  height:90%;        
-  max-width: 485px; 
-  margin: 2rem auto;      
+  width: 90%;
+  max-width: 485px;
+  margin: 2rem auto; 
   padding: 2rem;
-  background-color: rgba(226, 192, 220, 0.492);
-  border-radius: 25px;
+  
 }
 label {
- font-family: "Libre Baskerville", serif;
+  font-family: "Libre Baskerville", serif;
   font-size: 15px;
-  font-weight:normal;
+  font-weight: normal;
   color: #333;
-  display: block; 
-  margin-top:15px;
+  text-shadow:
+  0 0 5px #ff1493,
+  0 0 15px #ff69b4;
+  display: block;
+  text-align: center;
+  margin-top: 75px;
   margin-bottom: 5px;
 }
 
 #blogList li {
-    background-image: url();
-    background-repeat: no-repeat;
-    background-position: center;
-    display: flex;
-    align-items: center;      
-    justify-content: space-between; 
+  background-image: url();
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  align-items: center;      
+  justify-content: space-between; 
+  padding-left: 15px;
 }
 
 .edit-btn, .delete-btn {
-    display: inline-block;
-    margin-left: 6px;
+  background-color: #ccf916;
+  display: inline-block;
+  margin-left: 6px;
 }
 button{
-    margin-top:15px;
-    margin-left:50px;
-    display: block;
+  margin-top:15px;
+  margin-left:50px;
+  display: block;
+}
+
+textarea {
+  margin-top: 15px;
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  font-family: "Libre Baskerville", serif;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+#title{
+  width: 100%;
+  padding: 10px;
+  font-family: "Libre Baskerville", serif;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+
+h3 {
+
+  background-color: hsla(0, 0%, 100%, 0.733);
+  margin-top: 28px;
+  color: #000000f0;
+  text-shadow:
+  0 0 5px #ff1493,
+  0 0 15px #ff69b4;
+}
+
+.content {
+  background-color: hsl(0, 0%, 100%);
+  padding-left: 12px;
+  margin-top: 28px;
+}
+
+.timestamp {
+
+  background-color: hsl(0, 0%, 100%);
+  padding-left: 10px;
+  margin-top: 28px;
+  font-size: 0.85rem;
+  color: rgb(25, 18, 18);
 }
