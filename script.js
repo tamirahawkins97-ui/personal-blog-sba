@@ -1,11 +1,107 @@
+const blogForm = document.getElementById("blogForm");
+const titleInput = document.getElementById("title");
+const titleError = document.getElementById("titleError");
+const blogTextError = document.getElementById("blogTextError");
+const blogList = document.getElementById("blogList");
+const blogText = document.getElementById("blogText");
+
+const BLOG_POSTS_KEY = "saved_blog_posts";
+
+// Getter: safely checks localStorage and parses JSON or returns []
+const getSavedPosts = () => {
+    if (typeof window !== "undefined") {
+        const savedData = localStorage.getItem(BLOG_POSTS_KEY);
+        return savedData ? JSON.parse(savedData) : [];
+    }
+    return [];
+};
+
+// Initialize posts array with existing stored data
+const posts = getSavedPosts();
+
+// Creates post elements, attaches button listeners, and appends to DOM
+const renderPost = (post) => {
+    const li = document.createElement("li");
+    
+    // Creating HTML content for CSS Styling
+    li.innerHTML = `
+        <h3 class="post-title">${post.title}</h3>
+        <p class="content">${post.content}</p>
+        <p class="timestamp">Posted: ${post.timestamp}</p>
+    `;
+
+    const editButton = document.createElement("button");
+    const deleteButton = document.createElement("button");
+    editButton.textContent = "Edit";
+    deleteButton.textContent = "Delete";
+    editButton.classList.add("edit-btn");
+    deleteButton.classList.add("delete-btn");
+
+    // DELETE BUTTON LISTENER
+    deleteButton.addEventListener("click", () => {
+        // Remove from DOM
+        li.remove();
+
+        // Find post in array and remove it
+        const index = posts.findIndex((p) => p.id === post.id);
+        if (index !== -1) {
+            posts.splice(index, 1);
+        }
+
+        // Update localStorage
+        localStorage.setItem(BLOG_POSTS_KEY, JSON.stringify(posts));
+        console.log("Post deleted. Updated Storage:", posts);
+    });
+
+    // EDIT BUTTON LISTENER
+    editButton.addEventListener("click", () => {
+        const updatedTitle = prompt("Edit Title:", post.title);
+        const updatedContent = prompt("Edit Content:", post.content);
+
+        // Validation for editing
+        if (
+            updatedTitle !== null &&
+            updatedContent !== null &&
+            updatedTitle.trim() !== "" &&
+            updatedContent.trim() !== ""
+        ) {
+            post.title = updatedTitle.trim();
+            post.content = updatedContent.trim();
+
+            // Save updated post array to localStorage
+            localStorage.setItem(BLOG_POSTS_KEY, JSON.stringify(posts));
+
+            // Direct DOM update (no page reload required)
+            li.querySelector(".post-title").textContent = post.title;
+            li.querySelector(".content").textContent = post.content;
+
+            console.log("Post edited. Updated Storage:", posts);
+        } else {
+            alert("Title and content cannot be empty!");
+        }
+    });
+
+    // Attach buttons inside the post
+    li.appendChild(editButton);
+    li.appendChild(deleteButton);
+
+    // Add post to page
+    blogList.appendChild(li);
+};
+
+// Render saved posts when page loads
+posts.forEach((post) => {
+    renderPost(post);
+});
+
 // Form Submit Listener
 blogForm.addEventListener("submit", (event) => {
     event.preventDefault();
-    
+
     // Reset error messages
     titleError.textContent = "";
     blogTextError.textContent = "";
-    
+
     // Grab values
     const titleValue = titleInput.value.trim();
     const blogTextValue = blogText.value.trim();
@@ -25,7 +121,7 @@ blogForm.addEventListener("submit", (event) => {
 
     // Stop if invalid
     if (!isValid) {
-        console.warn("Form validation failed!");
+        console.warn("Validation failed. Form submit canceled.");
         return;
     }
 
@@ -50,14 +146,14 @@ blogForm.addEventListener("submit", (event) => {
         JSON.stringify(posts)
     );
 
-    // Console logs for debugging
-    console.log("Saved post to array:", newPost);
-    console.log("Updated Local Storage:", JSON.parse(localStorage.getItem(BLOG_POSTS_KEY)));
+    // Debugging logs
+    console.log("New Post Created:", newPost);
+    console.log("Current localStorage Content:", localStorage.getItem(BLOG_POSTS_KEY));
 
     // Display immediately
     renderPost(newPost);
 
-    // Clear form
+    // Clear form inputs
     titleInput.value = "";
     blogText.value = "";
 });
